@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Promises</title>
+</head>
+<body>
+    <script>
+
+        let testPromise = new Promise((resolve, reject) => {
+            setTimeout( function() {
+                     resolve("Success!")
+                    }, 2000);
+        });
+        testPromise.then(
+            (successMessage) => {
+            console.log("Yay! " + successMessage)
+            }
+        );
+        
+
+        let moviePromise = new Promise((resolve, reject) => {
+            fetch('http://ip.jsontest.com/')
+                .then(response => resolve(response.json()))
+                //.then(data => console.log(data));
+        });
+
+        moviePromise.then(
+            (successMessage) =>{
+                console.log('data: '+ JSON.stringify(successMessage));
+            }
+        );
+        
+
+    </script>
+
+</body>
+</html>

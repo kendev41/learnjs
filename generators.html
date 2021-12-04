@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Generators</title>
+</head>
+<body>
+    
+    <script>
+        //document.write("hello world!");
+        
+        var regularFunc = function (){
+            console.log('this is a regular function ..');
+            this.a = 0;
+            let b = 1;
+            this.getA = function (){
+                return this.a;
+            }
+            this.getB = function(){
+                return b;
+            }
+        };
+        var regularFuncObj = new regularFunc();
+        console.log(regularFuncObj.getB());
+
+        function* testFunc(){
+            console.log('test generation function');
+        }
+        testFunc(); // the testFunc() cannot be invoked like this!!!!
+
+        // Generator functions are only invoked by calling next() on the function object!!
+        function* genFunc(){
+           yield 'hello1';
+           yield 'hello2';
+           yield 'hello3';
+           for(let i=0;i<15;i++){
+               yield i;
+           }
+        }
+
+        var genObj = genFunc(); // assign function object to a variable
+        console.log(genObj);
+
+        var nextObj = genObj.next();  // call next() function to get the first yield
+        while(!nextObj.done){   //loop through by doing next() until we complete all yeilds within the function
+            console.log(nextObj.value);
+            nextObj = genObj.next();
+        }
+    </script>
+</body>
+</html>

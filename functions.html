@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Functions</title>
+</head>
+<body>
+    
+    <script>
+
+        //defining a function using a DECLARATION 
+        function f1(){
+            console.log('function 1');
+        }
+        f1();
+
+        //defining function using an EXPRESSION and assign it to a variable
+        let f2 = function(){ //create an anonymous function and assign it to a variable
+            console.log('function 2');
+        };
+        f2();
+
+
+        // bind function to an object using a call() function
+        let f3 = function(p){
+            console.log('function 3: ' + this.b + ' param: '+p);
+        };
+        f3();
+
+        let obj = {
+            a : 0,
+            b : 1
+        };
+
+        f3.call(obj, 'testParam');
+        console.log(f3);
+
+        //IIFE = Immediately invoked functional expression
+        (function(){ //create an anonymous function and invoke it immediately
+            console.log('This is a IFFE - immediately invoked functional expression!!!');
+        })();
+
+        //obj.f2();
+        //f2.apply();
+
+        
+    </script>
+</body>
+</html>
